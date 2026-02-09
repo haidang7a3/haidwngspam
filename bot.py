@@ -3250,17 +3250,17 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message: Message):
-    bot.reply_to(message, "Chào! Sử dụng /spam <số điện thoại> <số lần> để bắt đầu.")
+    bot.reply_to(message, "Chào! Sử dụng /haidang <số điện thoại> <số lần> để bắt đầu.")
 
 @bot.message_handler(commands=['help'])
 def help_command(message: Message):
-    bot.reply_to(message, "Lệnh: /spam <phone> <count>")
+    bot.reply_to(message, "Lệnh: /haidang <phone> <count>")
 
 @bot.message_handler(commands=['spam'])
-def spam(message: Message):
+def haidang(message: Message):
     args = message.text.split()[1:]
     if len(args) != 2:
-        bot.reply_to(message, "Usage: /spam <phone> <count>")
+        bot.reply_to(message, "Usage: /haidang <phone> <count>")
         return
     phone = args[0]
     try:
@@ -3269,7 +3269,7 @@ def spam(message: Message):
         bot.reply_to(message, "Count phải là số nguyên.")
         return
 
-    bot.reply_to(message, f"Bắt đầu spam đến {phone} {count} lần. Vui lòng chờ...")
+    bot.reply_to(message, f"Bắt đầu bot haidang spam đến {phone} {count} lần. Vui lòng chờ...")
     
     try:
         for i in range(1, count + 1):
@@ -3283,7 +3283,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Bot Telegram đang chạy!"
+    return "Bot haidang spam đang chạy!"
 
 def run_bot():
     bot.polling(none_stop=True)
